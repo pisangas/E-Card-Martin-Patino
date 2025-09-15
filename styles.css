@@ -8,6 +8,10 @@
   --card-bg: #1c2a23;         /* Fondo de tarjetas verde oscuro */
   --border-color: #2e3d34;    /* Bordes discretos */
   --transition: all 0.3s ease;
+  --slides: 5;          /* número real de imágenes */
+  --time-per-slide: 1s; /* tiempo por imagen */
+  --slides: 5;             /* número de imágenes únicas */
+  --time-per-slide: 3s; /* tiempo por imagen */
 }
 
 * {
@@ -145,22 +149,26 @@ section{
     box-shadow: 0 5px 15 px rgba(46, 189, 46, 0.3);
 }
 
-.hero{
-    min-width: 100vh;
+.hero {
+    min-height: 100vh;
     display: flex;
-    align-items: center;
-    padding-top: 5rem;    
+    justify-content: center;
+    align-items: center;    
+    padding-top: 5rem;
+    gap: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .hero-content{
-    display: flex;
+    display: flex;    
     justify-content: space-between;
     align-items: center;
     gap: 4rem;
 }
 
 .hero-text{
-    flex: 1;
+    flex: 1;    
 }
 
 .hero-text h1{
@@ -180,7 +188,7 @@ section{
     color: var(--gray-text);
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
-    max-width: 600px;
+    max-width: 600px;    
 }
 
 .social-links {
@@ -220,69 +228,70 @@ section{
 /* --- Contenedor principal --- */
 .carousel {
   position: relative;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 800px;
+  height: 500px;
+  margin: 40px auto;
   text-align: center;
   overflow: hidden;
-  border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
-  background: var(--secondary-color);
+  border-radius: 60px;
+  box-shadow: 0 20px 12px rgba(108, 99, 255, 0.3);
+  background: var(--secondary-color);  
 }
 
-.carousel h2 {
+.carousel h2 {  
   margin: 0;
   padding: 12px;
   font-size: 1.5rem;
+  text-align: center;
   background: var(--primary-color);
-  color: #fff;
+  color: var(--light-text);
 }
 
 /* --- Contenedor del slide --- */
 .carousel-container {
   position: relative;
   width: 100%;
-  background-color: var(--secondary-color);
+  height: 300px; /* altura fija del carrusel */
   overflow: hidden;
+  background-color: var(--secondary-color);
 }
 
 .carousel-slide {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  width: calc(100% * var(--slides) * 2); 
+  align-items: center;
+  gap: 20px;
+  animation: scroll calc(var(--slides) * var(--time-per-slide) * 2) linear infinite;
 }
 
-/* --- Imágenes --- */
 .carousel-slide img {
-  width: 100%;
-  flex-shrink: 0;
-  object-fit: cover;
-  user-select: none;
-  pointer-events: none;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10%;
+    border: 5px solid var(--secondary-color);
+    box-shadow: 0 0 25px rgba(108, 99, 255, 0.3);
+    transition: var(--transition);
 }
 
-/* --- Botones de navegación --- */
-.carousel button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  z-index: 10;
+@media (max-width: 600px) {
+  .carousel-container {
+    height: 200px;
+  }
+  .carousel-slide img {
+    width: 200px;
+    height: 200px;
+  }
 }
 
-.carousel button:hover {
-  background: rgba(0,0,0,0.8);
+.carousel-slide img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(108, 99, 255, 0.6);
+  z-index: 2;
 }
 
-.carousel .prev {
-  left: 10px;
-}
-
-.carousel .next {
-  right: 10px;
+/* --- Animación --- */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
