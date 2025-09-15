@@ -333,3 +333,118 @@ section {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+/* Tablets (pantallas medianas) */
+@media (max-width: 1024px) {
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+    padding: 4rem 2rem;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    max-width: 90%;
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .hero-image img {
+    width: 280px;
+    height: 280px;
+  }
+
+  /* Carrusel */
+  .carousel {
+    max-width: 95%;
+    height: auto;
+  }
+
+  .carousel-container {
+    height: 250px;
+  }
+
+  .carousel-slide img {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+/* Celulares (pantallas pequeñas) */
+@media (max-width: 600px) {
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.1rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .hero-image img {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Carrusel */
+  .carousel-container {
+    height: 200px;
+  }
+
+  .carousel-slide img {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Centrar social links y botón en móviles */
+@media (max-width: 1024px) {
+  .social-links {
+    justify-content: center;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-text .btn {
+    display: inline-block;
+    margin: 0 auto;
+  }
+}
